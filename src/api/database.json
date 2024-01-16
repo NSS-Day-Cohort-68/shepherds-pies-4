@@ -1,0 +1,83 @@
+{
+  "users": [
+    { "id": 1, "isAdmin": true, "userName": "admin_user" },
+    { "id": 2, "isAdmin": false, "userName": "john_doe" },
+    { "id": 3, "isAdmin": false, "userName": "jane_smith" },
+    { "id": 4, "isAdmin": false, "userName": "bob_jones" }
+  ],
+
+  "orders": [
+    {
+      "id": 1,
+      "delivery": true,
+      "runnerUserId": 2,
+      "makerUserId": 3,
+      "tip": 5,
+      "datePlaced": 1642357200
+    },
+    {
+      "id": 2,
+      "delivery": false,
+      "runnerUserId": 1,
+      "makerUserId": 2,
+      "tip": 3,
+      "datePlaced": 1642360800
+    },
+    {
+      "id": 3,
+      "delivery": true,
+      "runnerUserId": 3,
+      "makerUserId": 1,
+      "tip": 7,
+      "datePlaced": 1642364400
+    }
+  ],
+
+  "sizes": [
+    { "id": 1, "size": "Small", "cost": 10 },
+    { "id": 2, "size": "Medium", "cost": 12 },
+    { "id": 3, "size": "Large", "cost": 18 }
+  ],
+
+  "toppings": [
+    { "id": 1, "name": "Pepperoni", "cost": 0.5 },
+    { "id": 2, "name": "Mushroom", "cost": 0.5 },
+    { "id": 3, "name": "Sausage", "cost": 0.5 },
+    { "id": 4, "name": "Onion", "cost": 0.5 },
+    { "id": 5, "name": "Green Pepper", "cost": 0.5 },
+    { "id": 6, "name": "Black Olive", "cost": 0.5 },
+    { "id": 7, "name": "Basil", "cost": 0.5 },
+    { "id": 8, "name": "Extra Cheese", "cost": 0.5 }
+  ],
+
+  "pizzaToppings": [
+    { "id": 1, "toppingId": 1, "pizzaId": 1 },
+    { "id": 2, "toppingId": 2, "pizzaId": 1 },
+    { "id": 3, "toppingId": 3, "pizzaId": 1 }
+  ],
+
+  "pizzas": [
+    { "id": 1, "sizeId": 1, "cheeseId": 1, "sauceId": 1 },
+    { "id": 2, "sizeId": 3, "cheeseId": 2, "sauceId": 2 }
+  ],
+
+  "orderPizzas": [
+    { "id": 1, "orderId": 1, "pizzaId": 1 },
+    { "id": 2, "orderId": 2, "pizzaId": 2 },
+    { "id": 3, "orderId": 3, "pizzaId": 1 }
+  ],
+
+  "sauces": [
+    { "id": 1, "sauce": "Marinara" },
+    { "id": 2, "sauce": "Arrabbiata" },
+    { "id": 3, "sauce": "Garlic White" },
+    { "id": 4, "sauce": "No Sauce" }
+  ],
+
+  "cheeses": [
+    { "id": 1, "cheese": "Buffalo Mozzarella" },
+    { "id": 2, "cheese": "Four Cheese" },
+    { "id": 3, "cheese": "Vegan" },
+    { "id": 4, "cheese": "None (cheeseless)" }
+  ]
+}
