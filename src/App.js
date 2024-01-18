@@ -16,9 +16,10 @@ export const App = () => {
             <Outlet />
           </>
         }
-      />
-      <Route index element={<Welcome />} />
-      <Route path="orders" element={<OrderList />} />
+      >
+        <Route index element={<Welcome />} />
+        <Route path="orders" element={<OrderList />} />
+      </Route>
     </Routes>
   );
 };
