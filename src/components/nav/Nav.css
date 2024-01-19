@@ -18,6 +18,7 @@
   text-decoration: none;
   font-family: "Quicksand", sans-serif;
   letter-spacing: 1px;
+  
 }
 
 .navbar-logout {
@@ -26,4 +27,9 @@
 
 .navbar-link:hover {
   color: var(--primary);
+}
+
+
+a {
+  color: white;
 }
