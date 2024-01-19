@@ -72,7 +72,19 @@
     auto; /*!emojicursor.app*/
 }
 
-/* Create Order View */
+.order-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 3rem;
+}
+
+.order-details > * {
+  flex-basis: 31%;
+  margin: 0.5rem;
+}
+
 h1 {
   font-size: 2.6rem;
   color: white;
@@ -145,3 +157,4 @@ button:hover {
       16 0,
     auto; /*!emojicursor.app*/
 }
+
