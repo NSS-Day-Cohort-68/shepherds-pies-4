@@ -71,3 +71,16 @@
       16 0,
     auto; /*!emojicursor.app*/
 }
+
+.order-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 3rem;
+}
+
+.order-details > * {
+  flex-basis: 31%;
+  margin: 0.5rem;
+}
