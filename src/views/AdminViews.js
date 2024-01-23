@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
 import { AdminNav } from "../components/nav/AdminNav.js";
 import { Welcome } from "../components/Welcome/Welcome.js";
-import { OrderList } from "../components/Orders/OrderList.js";
+import { AdminOrderList } from "../components/Orders/AdminOrderList.js";
 import { OrderDetails } from "../components/Orders/OrderDetails.js";
 import { CreateOrder } from "../components/Orders/CreateOrder.js";
 import { Login } from "../components/Login/Login.js";
@@ -21,8 +21,8 @@ export const AdminViews = () => {
         }
       >
         <Route index element={<Welcome />} />
-        <Route path="orders">
-          <Route index element={<OrderList />} />
+        <Route path="adminOrders">
+          <Route index element={<AdminOrderList />} />
           <Route path=":orderId" element={<OrderDetails />} /> {""}
         </Route>{" "}
         <Route path="createOrder" element={<CreateOrder />} />

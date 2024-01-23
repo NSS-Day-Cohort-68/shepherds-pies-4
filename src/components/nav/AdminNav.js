@@ -11,7 +11,7 @@ export const AdminNav = () => {
         </Link>
       </li>
       <li className="navbar-item">
-        <Link className="navbar-link" to="/orders">
+        <Link className="navbar-link" to="/adminOrders">
           All Orders
         </Link>
       </li>
