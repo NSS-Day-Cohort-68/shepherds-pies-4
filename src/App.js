@@ -8,7 +8,6 @@ import { OrderDetails } from "./components/Orders/OrderDetails.js";
 import { CreateOrder } from "./components/Orders/CreateOrder.js";
 import { EmployeeList } from "./components/employees/EmployeeList.js";
 
-
 export const App = () => {
   return (
     <Routes>
@@ -26,11 +25,11 @@ export const App = () => {
         <Route path="orders">
           <Route index element={<OrderList />} />
           <Route path=":orderId" element={<OrderDetails />} /> {""}
-          <Route path="createOrder" element={<CreateOrder />} />
           <Route path="createPizza" />
           <Route path="employees" element={<EmployeeList />} />
           <Route path="employeeDetails" />
         </Route>
+        <Route path="createOrder" element={<CreateOrder />} />
       </Route>
     </Routes>
   );

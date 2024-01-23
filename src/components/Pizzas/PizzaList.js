@@ -11,8 +11,12 @@ export const PizzaList = ({ pizza, baseOrderCost }) => {
 
   const { orderId } = useParams();
 
-  useEffect(() => {
+  const getAndSetPizzas = () => {
     getAllPizzas().then(setAllPizzas);
+  };
+
+  useEffect(() => {
+    getAndSetPizzas();
   }, []);
 
   useEffect(() => {
@@ -40,11 +44,14 @@ export const PizzaList = ({ pizza, baseOrderCost }) => {
       <h2 className="text-light">Pizza</h2>
       <article className="orders text-light">
         {filteredPizzas.map((pizzaObj) => (
-          <Pizza
-            getNumToppings={getNumToppings}
-            pizza={pizzaObj}
-            key={pizzaObj.id}
-          />
+          <div>
+            <Pizza
+              getNumToppings={getNumToppings}
+              pizza={pizzaObj}
+              key={pizzaObj.id}
+              getAndSetPizzas={getAndSetPizzas}
+            />
+          </div>
         ))}
         <button className="btn btn-lg btn-success">Add a new pizza!</button>
       </article>
