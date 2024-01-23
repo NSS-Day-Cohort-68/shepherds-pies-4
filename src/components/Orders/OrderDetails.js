@@ -1,15 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./Orders.css";
-import { getOrderByOrderId } from "../../Services/orderServices.js";
+import {
+  deleteOrder,
+  getOrderByOrderId,
+} from "../../Services/orderServices.js";
 import { PizzaList } from "../Pizzas/PizzaList.js";
-// import { OrderCostTable } from "./OrderCostTable.js";
 
 export const OrderDetails = () => {
   const [order, setOrder] = useState({});
   const { orderId } = useParams();
   const [baseOrderCost, setBaseOrderCost] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getOrderByOrderId(orderId).then((data) => {
@@ -24,6 +28,13 @@ export const OrderDetails = () => {
       console.log(baseOrderCost);
     }
   }, [order]);
+
+  const handleDeleteOrder = () => {
+    deleteOrder(orderId).then(() => {
+      navigate("/orders");
+    });
+  };
+
   return baseOrderCost !== 0 ? (
     <section className="order-details text-light">
       <header>Delivery # {order.id}</header>
@@ -37,7 +48,9 @@ export const OrderDetails = () => {
         <button className="btn btn-success">Edit Order</button>
       </div>
       <div>
-        <button className="btn btn-danger">Delete Order</button>
+        <button onClick={handleDeleteOrder} className="btn btn-danger">
+          Delete Order
+        </button>
       </div>
     </section>
   ) : (
