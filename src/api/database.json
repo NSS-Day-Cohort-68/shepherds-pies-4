@@ -67,14 +67,6 @@
       "tableId": 3
     },
     {
-      "id": 4,
-      "delivery": false,
-      "userId": 4,
-      "tip": 6,
-      "datePlaced": "2022-01-20T18:00:00Z",
-      "tableId": 4
-    },
-    {
       "id": 5,
       "delivery": true,
       "userId": 5,
@@ -176,25 +168,18 @@
       "orderId": 5
     },
     {
-      "id": 4,
-      "sizeId": 2,
-      "cheeseId": 1,
-      "sauceId": 2,
-      "orderId": 5
-    },
-    {
       "id": 1,
       "sizeId": 1,
       "cheeseId": 1,
       "sauceId": 1,
-      "orderId": 1
+      "orderId": 2
     },
     {
       "id": 2,
       "sizeId": 2,
       "cheeseId": 2,
       "sauceId": 2,
-      "orderId": 1
+      "orderId": 2
     }
   ],
   "sauces": [
