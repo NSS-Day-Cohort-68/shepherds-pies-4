@@ -11,14 +11,15 @@
   flex-basis: 20%;
   list-style-type: none;
   text-align: center;
-  color: var(--offWhite);
+  color: white
 }
 
 .navbar-link {
   text-decoration: none;
   font-family: "Quicksand", sans-serif;
   letter-spacing: 1px;
-  
+  color: white;
+
 }
 
 .navbar-logout {

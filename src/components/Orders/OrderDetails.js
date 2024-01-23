@@ -35,12 +35,6 @@ export const OrderDetails = () => {
     });
   };
 
-  // const handleDeletePizza = () => {
-  //   deletePizza(pizza.id).then(() => {
-  //     getAndSetPizzas();
-  //   });
-  // };
-
   return baseOrderCost !== 0 ? (
     <section className="order-details text-light">
       <header>Delivery # {order.id}</header>
