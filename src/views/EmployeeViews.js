@@ -21,8 +21,10 @@ export const EmployeeViews = () => {
         }
       >
         <Route index element={<Welcome />} />
-        <Route path="orders" element={<OrderList />} />
-        <Route path=":orderId" element={<OrderDetails />} /> {""}
+        <Route path="orders">
+          <Route index element={<OrderList />} />
+          <Route path=":orderId" element={<OrderDetails />} /> {""}
+        </Route>{" "}
         <Route path="createOrder" element={<CreateOrder />} />
         <Route path="createPizza" />
         <Route path="logIn" element={<Login />} />
