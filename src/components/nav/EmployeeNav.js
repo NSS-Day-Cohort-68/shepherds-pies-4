@@ -7,7 +7,7 @@ export const EmployeeNav = () => {
   return (
     <ul className="navbar">
       <li className="navbar-item text-primary">
-        <Link className="navbar-link" to="/create">
+        <Link className="navbar-link" to="/createOrder">
           Create Order!
         </Link>
       </li>
