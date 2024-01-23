@@ -7,31 +7,24 @@ import { OrderList } from "./components/Orders/OrderList.js";
 import { OrderDetails } from "./components/Orders/OrderDetails.js";
 import { CreateOrder } from "./components/Orders/CreateOrder.js";
 import { EmployeeList } from "./components/employees/EmployeeList.js";
-
+import { Login } from "./components/Login/Login.js";
+import { AdminNav } from "./components/nav/AdminNav.js";
+import { ApplicationViews } from "./views/ApplicationViews.js";
+import { Authorized } from "./views/Authorized.js";
 
 export const App = () => {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            <EmployeeNav />
-            <Outlet />
-          </>
-        }
-      >
-        <Route index element={<Welcome />} />
+      <Route path="/login" element={<Login />} />
 
-        <Route path="orders">
-          <Route index element={<OrderList />} />
-          <Route path=":orderId" element={<OrderDetails />} /> {""}
-          <Route path="createOrder" element={<CreateOrder />} />
-          <Route path="createPizza" />
-          <Route path="employees" element={<EmployeeList />} />
-          <Route path="employeeDetails" />
-        </Route>
-      </Route>
+      <Route
+        path="*"
+        element={
+          <Authorized>
+            <ApplicationViews />
+          </Authorized>
+        }
+      />
     </Routes>
   );
 };

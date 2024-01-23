@@ -14,7 +14,7 @@ export const EmployeeList = () => {
 
   return (
     <div className="employee-container">
-      <h2>Employees</h2>
+      <h2 className="employee-headline">Employees</h2>
       {employees.map((employeeObj) => {
         return (
           <Link to="employeeDetails" className="employees">

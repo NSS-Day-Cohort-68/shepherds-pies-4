@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import "./Orders.css";
 import { getOrderByOrderId } from "../../Services/orderServices.js";
 import { PizzaList } from "../Pizzas/PizzaList.js";
-import { OrderCostTable } from "./OrderCostTable.js";
+// import { OrderCostTable } from "./OrderCostTable.js";
 
 export const OrderDetails = () => {
   const [order, setOrder] = useState({});
