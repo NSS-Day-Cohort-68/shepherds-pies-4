@@ -1,6 +1,5 @@
 import React from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
-import { AdminNav } from "../components/nav/AdminNav.js";
 import { EmployeeNav } from "../components/nav/EmployeeNav.js";
 import { Welcome } from "../components/Welcome/Welcome.js";
 import { OrderList } from "../components/Orders/OrderList.js";
