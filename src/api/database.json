@@ -67,14 +67,6 @@
       "tableId": 3
     },
     {
-      "id": 4,
-      "delivery": false,
-      "userId": 4,
-      "tip": 6,
-      "datePlaced": "2022-01-20T18:00:00Z",
-      "tableId": 4
-    },
-    {
       "id": 5,
       "delivery": true,
       "userId": 5,

@@ -11,7 +11,7 @@ export const getAllToppings = async () => {
 };
 
 export const deletePizza = (pizzaId) => {
-  return fetch(`http://localhost:8088/orders/${pizzaId}`, {
+  return fetch(`http://localhost:8088/pizzas/${pizzaId}`, {
     method: "DELETE",
   });
 };
