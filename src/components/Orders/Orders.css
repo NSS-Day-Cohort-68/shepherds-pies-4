@@ -16,7 +16,6 @@
   margin: 0.5rem 0;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  cursor: pointer;
   color: white;
 }
 
@@ -140,6 +139,7 @@ input::placeholder {
 
 .tables-container,
 .tips-container,
+.address-container,
 .delivery {
   display: flex;
   justify-content: center;
@@ -158,3 +158,4 @@ button:hover {
 a {
   text-decoration: none;
 }
+

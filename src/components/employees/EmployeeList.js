@@ -17,7 +17,11 @@ export const EmployeeList = () => {
       <h2 className="employee-headline">Employees</h2>
       {employees.map((employeeObj) => {
         return (
-          <Link to="employeeDetails" className="employees">
+          <Link
+            to={`/employees/${employeeObj.id}`}
+            key={employeeObj.id}
+            className="employees"
+          >
             <div>
               <div className="employee-id">EmployeeId #: {employeeObj.id}</div>
               <div className="employee-name">Name: {employeeObj.userName}</div>

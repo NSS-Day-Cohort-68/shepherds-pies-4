@@ -9,7 +9,7 @@ import { Login } from "../components/Login/Login.js";
 import { EmployeeList } from "../components/employees/EmployeeList.js";
 import { CreatePizza } from "../components/Pizza/CreatePizza.js";
 
-export const EmployeeViews = () => {
+export const EmployeeViews = ({ currentUser }) => {
   return (
     <Routes>
       <Route
@@ -26,11 +26,14 @@ export const EmployeeViews = () => {
           <Route index element={<OrderList />} />
           <Route path=":orderId" element={<OrderDetails />} /> {""}
         </Route>{" "}
+        <Route
+          path="createOrder"
+          element={<CreateOrder currentUser={currentUser} />}
+        />
+        <Route path="createPizza" />
         <Route path="createOrder" element={<CreateOrder />} />
         <Route path="createPizza" element={<CreatePizza />} />
         <Route path="logIn" element={<Login />} />
-        <Route path="employees" element={<EmployeeList />} />
-        <Route path="employeeDetails" />
       </Route>
     </Routes>
   );

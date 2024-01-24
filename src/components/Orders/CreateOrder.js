@@ -2,8 +2,8 @@ import { useState } from "react";
 import { addNewOrder } from "../../Services/orderServices";
 import { Link } from "react-router-dom";
 
-export const CreateOrder = () => {
-  const [delivery, setDelivery] = useState(false);
+export const CreateOrder = ({ currentUser }) => {
+  const [delivery, setDelivery] = useState(null);
   const [tableId, setTableId] = useState(0);
   const [tip, setTip] = useState(0);
 
@@ -13,7 +13,7 @@ export const CreateOrder = () => {
       tip: tip,
       tableId: tableId,
       datePlaced: new Date(),
-      userId: 0,
+      userId: currentUser.id,
     };
     addNewOrder(orderObj);
   };
@@ -50,27 +50,47 @@ export const CreateOrder = () => {
           />
         </label>
       </div>
-      <div className="tables-container">
-        <h3>Table Id:</h3>
-        <select
-          id="tables"
-          onChange={(event) => {
-            setTableId(parseInt(event.target.value));
-          }}
-        >
-          <option value="0">Choose table id </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </div>
+
+      {/* Render the address input only if delivery is set to "Yes" */}
+      {delivery === true && (
+        <div className="address-container">
+          <h3>Address:</h3>
+          <input
+            id="address"
+            type="text"
+            name="address"
+            placeholder="Input Delivery Address"
+            onChange={(event) => {
+              setTip(parseInt(event.target.value));
+            }}
+          />
+        </div>
+      )}
+      {/* Render the tableId dropdown only if delivery is set to "No" */}
+      {delivery === false && (
+        <div className="tables-container">
+          <h3>Table Id:</h3>
+          <select
+            id="tables"
+            onChange={(event) => {
+              setTableId(parseInt(event.target.value));
+            }}
+          >
+            <option value="0">Choose table id </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      )}
+
       <div className="tips-container">
         <h3>Tip:</h3>
         <input
@@ -85,7 +105,7 @@ export const CreateOrder = () => {
       </div>
       <div className="btn-container">
         <Link to="/createPizza">
-          <button onClick={handleCreateOrderClick}>Create Order</button>
+          <button onClick={handleCreateOrderClick}>Add Pizza</button>
         </Link>
       </div>
     </div>

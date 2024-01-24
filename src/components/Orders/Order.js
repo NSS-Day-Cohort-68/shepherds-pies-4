@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Orders.css";
 
-export const Order = ({ order, getAndSetOrders }) => {
+export const Order = ({ order }) => {
   const date = new Date(order.datePlaced);
   const formattedDate = date.toLocaleString("en-US", {
     year: "numeric",
