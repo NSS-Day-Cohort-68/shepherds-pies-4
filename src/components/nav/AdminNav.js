@@ -2,7 +2,7 @@ import React from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
 
-export const EmployeeNav = () => {
+export const AdminNav = () => {
   return (
     <ul className="navbar">
       <li className="navbar-item text-primary">
@@ -11,8 +11,18 @@ export const EmployeeNav = () => {
         </Link>
       </li>
       <li className="navbar-item">
-        <Link className="navbar-link" to="/orders">
+        <Link className="navbar-link" to="/adminOrders">
           All Orders
+        </Link>
+      </li>
+      <li className="navbar-item">
+        <Link className="navbar-link" to="/employees">
+          Employees
+        </Link>
+      </li>
+      <li className="navbar-item">
+        <Link className="navbar-link" to="/salesReport">
+          Sales Report
         </Link>
       </li>
       <li className="navbar-item navbar-logout">

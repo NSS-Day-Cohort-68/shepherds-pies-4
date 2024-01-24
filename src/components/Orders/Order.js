@@ -17,7 +17,7 @@ export const Order = ({ order, getAndSetOrders }) => {
   return (
     <section className="order">
       <header className="order-info">Order #: {order.id}</header>
-      <div>Date Placed: {formattedDate}</div>
+      <div className="order-info">Date Placed: {formattedDate}</div>
     </section>
   );
 };

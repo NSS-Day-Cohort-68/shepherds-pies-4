@@ -1,28 +1,17 @@
 import React from "react";
+import { useState } from "react";
 
-export const OrderFilterBar = () => {
+export const OrderFilterBar = ({ handleSortChange }) => {
   return (
     <div>
-      <div className="dropdown">
-        <button
-          className="btn btn-primary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Filter by...
-        </button>
-        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a className="dropdown-item" href="#">
-            Most Recent
-          </a>
-          <a className="dropdown-item" href="#">
-            Oldest First...
-          </a>
-        </div>
-      </div>
+      <select
+        onChange={(e) => handleSortChange(e.target.value)}
+        className="btn btn-primary brn-dropwdown"
+      >
+        <option value="">Filter by...</option>
+        <option value="newest">Newest First...</option>
+        <option value="oldest">Oldest First...</option>
+      </select>
     </div>
   );
 };
