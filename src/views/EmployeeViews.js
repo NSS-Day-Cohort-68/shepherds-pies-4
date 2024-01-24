@@ -6,7 +6,6 @@ import { OrderList } from "../components/Orders/OrderList.js";
 import { OrderDetails } from "../components/Orders/OrderDetails.js";
 import { CreateOrder } from "../components/Orders/CreateOrder.js";
 import { Login } from "../components/Login/Login.js";
-import { EmployeeList } from "../components/employees/EmployeeList.js";
 
 export const EmployeeViews = () => {
   return (
@@ -28,8 +27,6 @@ export const EmployeeViews = () => {
         <Route path="createOrder" element={<CreateOrder />} />
         <Route path="createPizza" />
         <Route path="logIn" element={<Login />} />
-        <Route path="employees" element={<EmployeeList />} />
-        <Route path="employeeDetails" />
       </Route>
     </Routes>
   );

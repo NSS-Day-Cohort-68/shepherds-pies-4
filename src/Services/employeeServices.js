@@ -2,7 +2,6 @@ export const getAllEmployees = () => {
   return fetch(" http://localhost:8088/users").then((res) => res.json());
 };
 
-
 export const getEmployeeById = (userId) => {
   return fetch(`http://localhost:8088/users?id=${userId}`).then((res) =>
     res.json()
@@ -24,4 +23,3 @@ export const getUserByEmail = (email) => {
     res.json()
   );
 };
-

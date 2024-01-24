@@ -7,6 +7,8 @@ import { OrderDetails } from "../components/Orders/OrderDetails.js";
 import { CreateOrder } from "../components/Orders/CreateOrder.js";
 import { Login } from "../components/Login/Login.js";
 import { EmployeeList } from "../components/employees/EmployeeList.js";
+import { EmployeeDetails } from "../components/employees/EmployeeDetails.js";
+import { EditEmployeeForm } from "../components/forms/EditEmployeeForm.js";
 
 export const AdminViews = () => {
   return (
@@ -28,8 +30,13 @@ export const AdminViews = () => {
         <Route path="createOrder" element={<CreateOrder />} />
         <Route path="createPizza" />
         <Route path="logIn" element={<Login />} />
-        <Route path="employees" element={<EmployeeList />} />
-        <Route path="employeeDetails" />
+        <Route path="employees">
+          <Route index element={<EmployeeList />} />
+          <Route path=":employeeId">
+            <Route index element={<EmployeeDetails />} />
+            <Route path="employeeEdit" element={<EditEmployeeForm />} /> {""}
+          </Route>
+        </Route>
       </Route>
     </Routes>
   );
