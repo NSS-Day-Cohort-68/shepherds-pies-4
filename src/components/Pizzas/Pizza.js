@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getAllToppings } from "../../Services/pizzaServices.js";
+import { deletePizza, getAllToppings } from "../../Services/pizzaServices.js";
 
-export const Pizza = ({ pizza, getNumToppings }) => {
+export const Pizza = ({ pizza, getNumToppings, getAndSetPizzas }) => {
   const [pizzaToppings, setPizzaToppings] = useState([]);
   const [pizzaCost, setPizzaCost] = useState(0);
 
@@ -20,6 +20,12 @@ export const Pizza = ({ pizza, getNumToppings }) => {
 
   const cost = pizza.size.cost + pizzaToppings.length * 0.5;
 
+  const handleDeletePizza = () => {
+    deletePizza(pizza.id).then(() => {
+      getAndSetPizzas();
+    });
+  };
+
   return (
     <section className="order">
       <header className="order-info">Pizza #: {pizza.id}</header>
@@ -32,10 +38,12 @@ export const Pizza = ({ pizza, getNumToppings }) => {
       </div>
       <div>Total Cost: ${cost} </div>
       <div>
-        <button className="btn btn-success">Edit Pizza</button>
+        <button className="btn btn-success btn-lg">Edit Pizza</button>
       </div>
       <div>
-        <button className="btn btn-danger">Remove Pizza</button>
+        <button onClick={handleDeletePizza} className="btn btn-danger btn-lg">
+          Remove Pizza
+        </button>
       </div>
     </section>
   );

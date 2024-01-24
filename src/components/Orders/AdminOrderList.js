@@ -6,11 +6,14 @@ import { Order } from "./Order.js";
 import "./Orders.css";
 import { Link } from "react-router-dom";
 import { OrderFilterBar } from "./OrderFilterBar.js";
+import { getAllEmployees } from "../../Services/employeeServices.js";
+import { EmployeeDropdown } from "../employees/EmployeeDropdown.js";
 
-export const OrderList = () => {
+export const AdminOrderList = () => {
   const [allOrders, setAllOrders] = useState([]);
   const [sortedOrders, setSortedOrders] = useState([]);
   const [sortOrder, setSortOrder] = useState("oldest");
+  const [allEmployees, setAllEmployees] = useState([]);
 
   const getAndSetOrders = () => {
     getAllOrders().then((ordersArray) => {
@@ -44,6 +47,12 @@ export const OrderList = () => {
     sortOrders(allOrders, sortOrder);
   }, [allOrders, sortOrder]);
 
+  useEffect(() => {
+    getAllEmployees().then((employeesArray) => {
+      setAllEmployees(employeesArray);
+    });
+  }, []);
+
   return (
     <div className="orders-container ">
       <h2 className="text-light">Orders</h2>
@@ -51,38 +60,17 @@ export const OrderList = () => {
         <OrderFilterBar handleSortChange={handleSortChange} />
       </div>
       <article className="orders text-light">
-        {sortedOrders.map((orderObj) => {
-          return (
-            <Link key={orderObj.id} to={`/orders/${orderObj.id}`}>
-              <Order
-                getAndSetOrders={getAndSetOrders}
-                order={orderObj}
-                key={orderObj.id}
-              />
-            </Link>
-          );
-        })}
+        {sortedOrders.map((orderObj) => (
+          <Link key={orderObj.id} to={`/adminOrders/${orderObj.id}`}>
+            <Order
+              getAndSetOrders={getAndSetOrders}
+              order={orderObj}
+              key={orderObj.id}
+            />
+            <EmployeeDropdown allEmployees={allEmployees} />
+          </Link>
+        ))}
       </article>
     </div>
   );
 };
-
-//   return (
-//     <div>
-//       <label>Sort By:</label>
-//       <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
-//         <option value="oldest">Oldest to Newest</option>
-//         <option value="newest">Newest to Oldest</option>
-//       </select>
-
-//       {data.map(item => (
-//         <div key={item.id}>
-//       {/* Render your data here */}
-//           {/* Render your item content */}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default YourComponent;
