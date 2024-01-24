@@ -37,3 +37,41 @@ h2 {
       16 0,
     auto; /*!emojicursor.app*/
 }
+
+/* Employee Details */
+.employee-details {
+  border: 1px solid var(--outline);
+  width: 70%;
+  margin: 2rem auto 0 auto;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 2rem;
+  color: var(--outline);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.detail-name {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.employee-info-container {
+  width: 80%;
+  margin: 0 auto 0 auto;
+}
+
+.employee-info {
+  text-align: left;
+  padding: 3px;
+}
+
+.btn {
+  display: flex;
+  justify-content: right;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  margin-right: 1rem;
+}
+
