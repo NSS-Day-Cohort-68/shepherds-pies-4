@@ -10,7 +10,7 @@ import { EmployeeList } from "../components/employees/EmployeeList.js";
 import { EmployeeDetails } from "../components/employees/EmployeeDetails.js";
 import { EditEmployeeForm } from "../components/forms/EditEmployeeForm.js";
 
-export const AdminViews = () => {
+export const AdminViews = ({ currentUser }) => {
   return (
     <Routes>
       <Route
@@ -27,7 +27,7 @@ export const AdminViews = () => {
           <Route index element={<AdminOrderList />} />
           <Route path=":orderId" element={<OrderDetails />} /> {""}
         </Route>{" "}
-        <Route path="createOrder" element={<CreateOrder />} />
+        <Route path="createOrder" element={<CreateOrder currentUser={currentUser} />} />
         <Route path="createPizza" />
         <Route path="logIn" element={<Login />} />
         <Route path="employees">
