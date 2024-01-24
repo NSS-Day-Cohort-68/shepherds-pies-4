@@ -1,6 +1,6 @@
 export const getAllPizzas = () => {
   return fetch(
-    "http://localhost:8088/pizzas?_expand=sauce&_expand=size&_expand=cheese&_expand=order"
+    "http://localhost:8088/pizzas?_expand=size&_expand=sauce&_expand=cheese&_expand=order&_embed=pizzaToppings"
   ).then((res) => res.json());
 };
 
