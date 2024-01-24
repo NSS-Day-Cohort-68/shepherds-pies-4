@@ -160,37 +160,6 @@
     }
   ],
   "pizzas": [
-<<<<<<< HEAD
-    {
-      "id": 1,
-      "sizeId": 1,
-      "cheeseId": 1,
-      "sauceId": 1,
-      "orderId": 2
-    },
-    {
-      "id": 2,
-      "sizeId": 2,
-      "cheeseId": 2,
-      "sauceId": 2,
-      "orderId": 2
-    },
-    {
-      "id": 3,
-      "sizeId": 2,
-      "cheeseId": 1,
-      "sauceId": 3,
-      "orderId": 5
-    },
-    {
-      "id": 4,
-      "sizeId": 2,
-      "cheeseId": 1,
-      "sauceId": 2,
-      "orderId": 5
-    },
-=======
->>>>>>> 44e570db942ce6ceb7d13a5a08229a3e9e5a3ea6
     {
       "id": 1,
       "sizeId": 1,
