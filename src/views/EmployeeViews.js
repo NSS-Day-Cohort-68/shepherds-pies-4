@@ -7,6 +7,7 @@ import { OrderDetails } from "../components/Orders/OrderDetails.js";
 import { CreateOrder } from "../components/Orders/CreateOrder.js";
 import { Login } from "../components/Login/Login.js";
 import { EmployeeList } from "../components/employees/EmployeeList.js";
+import { CreatePizza } from "../components/Pizza/CreatePizza.js";
 
 export const EmployeeViews = () => {
   return (
@@ -26,7 +27,7 @@ export const EmployeeViews = () => {
           <Route path=":orderId" element={<OrderDetails />} /> {""}
         </Route>{" "}
         <Route path="createOrder" element={<CreateOrder />} />
-        <Route path="createPizza" />
+        <Route path="createPizza" element={<CreatePizza />} />
         <Route path="logIn" element={<Login />} />
         <Route path="employees" element={<EmployeeList />} />
         <Route path="employeeDetails" />
