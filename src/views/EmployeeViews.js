@@ -6,7 +6,6 @@ import { OrderList } from "../components/Orders/OrderList.js";
 import { OrderDetails } from "../components/Orders/OrderDetails.js";
 import { CreateOrder } from "../components/Orders/CreateOrder.js";
 import { Login } from "../components/Login/Login.js";
-import { EmployeeList } from "../components/employees/EmployeeList.js";
 
 export const EmployeeViews = () => {
   return (

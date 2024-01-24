@@ -44,7 +44,7 @@ export const EditEmployeeForm = () => {
 
   return (
     <form>
-      <h2 className="">Edit Employee</h2>
+      <h2 className="edit-header">Edit Employee</h2>
       <div className="edit-container">
         <h3 className="edit-name">{employee.userName}</h3>
         <fieldset>
