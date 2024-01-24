@@ -16,7 +16,6 @@
   margin: 0.5rem 0;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  cursor: pointer;
   color: white;
 }
 
@@ -159,3 +158,4 @@ button:hover {
 a {
   text-decoration: none;
 }
+
