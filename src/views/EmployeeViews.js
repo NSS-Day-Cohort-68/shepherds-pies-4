@@ -7,7 +7,7 @@ import { OrderDetails } from "../components/Orders/OrderDetails.js";
 import { CreateOrder } from "../components/Orders/CreateOrder.js";
 import { Login } from "../components/Login/Login.js";
 
-export const EmployeeViews = () => {
+export const EmployeeViews = ({ currentUser }) => {
   return (
     <Routes>
       <Route
@@ -24,7 +24,7 @@ export const EmployeeViews = () => {
           <Route index element={<OrderList />} />
           <Route path=":orderId" element={<OrderDetails />} /> {""}
         </Route>{" "}
-        <Route path="createOrder" element={<CreateOrder />} />
+        <Route path="createOrder" element={<CreateOrder currentUser={currentUser} />} />
         <Route path="createPizza" />
         <Route path="logIn" element={<Login />} />
       </Route>
