@@ -32,7 +32,7 @@ export const AdminViews = ({ currentUser }) => {
           path="createOrder"
           element={<CreateOrder currentUser={currentUser} />}
         />
-        <Route path="createPizza" />
+        <Route path="createPizza" />x
         <Route path="salesReport" element={<SalesReport />} />
         <Route path="logIn" element={<Login />} />
         <Route path="employees">

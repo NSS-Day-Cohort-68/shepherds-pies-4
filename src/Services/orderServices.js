@@ -4,7 +4,7 @@ export const getAllOrders = () => {
 
 export const getOrderByOrderId = (orderId) => {
   return fetch(
-    `http://localhost:8088/orders?orderId=${orderId}&_embed=pizzas&_embed=pizzaToppings`
+    `http://localhost:8088/orders?id=${orderId}&_embed=pizzas&_embed=pizzaToppings`
   ).then((res) => res.json());
 };
 
