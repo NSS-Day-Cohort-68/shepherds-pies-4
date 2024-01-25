@@ -1,12 +1,14 @@
 import React from "react";
 
-export const SalesMonthDropdown = () => {
+export const SalesMonthDropdown = ({ handleFilter }) => {
+  const handleChange = (event) => {
+    console.log("Handle Event Fire");
+    const selectedMonth = event.target.value;
+    handleFilter(selectedMonth);
+  };
   return (
     <div>
-      <select
-        // onChange={(e) => handleMonthChange(e.target.value)}
-        className="btn btn-warning"
-      >
+      <select onChange={handleChange} className="btn btn-warning">
         <option value="">Select Month</option>
         <option value="Jan">Jan</option>
         <option value="Feb">Feb</option>

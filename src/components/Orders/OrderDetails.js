@@ -37,7 +37,7 @@ export const OrderDetails = () => {
 
   return baseOrderCost !== 0 ? (
     <section className="order-details text-light">
-      <header>Delivery # {order.id}</header>
+      <header> Order #:{orderId} </header>
 
       <div>
         <span></span>
@@ -56,25 +56,4 @@ export const OrderDetails = () => {
   ) : (
     <></>
   );
-  //   } else {
-  //     return (
-  //       <section className="order-details text-light">
-  //         <header>Dine-in # {order.id}</header>
-  //         <div>
-  //           <span></span>
-  //           <PizzaList />
-  //         </div>
-  //         <div>
-  //           <span>Cost Table</span>
-  //           <OrderCostTable />
-  //         </div>
-  //         <div>
-  //           <button className="btn btn-success">Edit Order</button>
-  //         </div>
-  //         <div>
-  //           <button className="btn btn-danger">Delete Order</button>
-  //         </div>
-  //       </section>
-  //     );
-  //   }
 };

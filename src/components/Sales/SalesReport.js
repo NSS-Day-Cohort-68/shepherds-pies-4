@@ -4,58 +4,108 @@ import { Link } from "react-router-dom";
 import { Order } from "../Orders/Order.js";
 import { SalesMonthDropdown } from "./SalesMonthDropdown.js";
 import "./Sales.css";
+import { SalesTotalSales } from "./SalesTotalSales.js";
+import { SalesPopularItems } from "./SalesPopularItems.js";
+import { getAllPizzas } from "../../Services/pizzaServices.js";
+import { SalesOrders } from "./SalesOrders.js";
 
 export const SalesReport = () => {
   const [allOrders, setAllOrders] = useState([]);
-
-  const getAndSetOrders = () => {
-    getAllOrders().then((ordersArray) => {
+  const [filteredMonth, setFilteredMonth] = useState([]);
+  const [filteredMonthOrder, setFilteredMonthOrder] = useState([]);
+  useEffect(() => {
+    getAllPizzas().then((ordersArray) => {
       setAllOrders(ordersArray);
+      setFilteredMonth(ordersArray);
+      setFilteredMonthOrder(filteredMonth);
     });
-  };
+  }, []);
 
   useEffect(() => {
-    getAndSetOrders();
+    setFilteredMonthOrder(filteredMonthOrder?.order);
   }, []);
+
+  const handleCompairDate = (monthIndex, order) => {
+    const compairMonth = new Date(order?.order?.datePlaced).getMonth();
+
+    if (compairMonth === monthIndex) {
+      return order;
+    }
+  };
+
+  const handleFilter = (selectedMonth) => {
+    if (selectedMonth === "") {
+      setFilteredMonth(allOrders);
+    } else if (selectedMonth === "Jan") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(0, order);
+        })
+      );
+    } else if (selectedMonth === "Feb") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(1, order);
+        })
+      );
+    } else if (selectedMonth === "Mar") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(2, order);
+        })
+      );
+    } else if (selectedMonth === "Apr") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(3, order);
+        })
+      );
+    } else if (selectedMonth === "May") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(4, order);
+        })
+      );
+    } else if (selectedMonth === "Jun") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(5, order);
+        })
+      );
+    } else if (selectedMonth === "Jul") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(6, order);
+        })
+      );
+    } else if (selectedMonth === "Aug") {
+      setFilteredMonth(
+        allOrders.filter((order) => {
+          return handleCompairDate(7, order);
+        })
+      );
+    }
+  };
 
   return (
     <div className="sales-container">
       <h2 className="text-light">Sales Report</h2>
       <div>
-        <SalesMonthDropdown />
+        <SalesMonthDropdown handleFilter={handleFilter} />
       </div>
       <section className="sales-box">
         <article className="orders text-light sales-orders">
-          {allOrders.map((orderObj) => (
-            <Link key={orderObj.id} to={`/adminOrders/${orderObj.id}`}>
-              <Order order={orderObj} key={orderObj.id} />
+          {filteredMonth.map((orderObj) => (
+            <Link key={orderObj.id} to={`/adminOrders/${orderObj.orderId}`}>
+              <SalesOrders order={orderObj.order} key={orderObj.orderId} />
             </Link>
           ))}
         </article>
         <article className="sidebar-container">
-          <section className="total-sales-container">
-            <h4>🍅🍕Total Sales Amount🍕🍅</h4>
-            <h6 className="sales-item">$1,000,000,000</h6>
-          </section>
-          <section className="popular-items-container">
-            <h4>🍅🍕Popular Items🍕🍅</h4>
-            <h6 className="popular-item">Most Popular Size: xyz</h6>
-            <h6 className="popular-item">Most Popular Cheese: xyz</h6>
-            <h6 className="popular-item">Most Popular Sauce: xyz</h6>
-            <h6 className="popular-item">Top Three Toppings: xyz</h6>
-          </section>
+          <SalesTotalSales filteredMonth={filteredMonth} />
+          <SalesPopularItems filteredMonth={filteredMonth} />
         </article>
       </section>
     </div>
   );
 };
-
-// need dropdown to work
-//need cost on each order then add what has been filtered?
-
-// Sales report - An admin should be able to view the orders for a
-//specific month, and get the total sales amount for that month
-
-// Sales report - Additionally, the sales report should show the
-//most popular items - display the most popular size, cheese, sauce,
-// and the top three toppings for that month.

@@ -66,23 +66,3 @@ export const OrderList = () => {
     </div>
   );
 };
-
-//   return (
-//     <div>
-//       <label>Sort By:</label>
-//       <select value={sortBy} onChange={(e) => handleSortChange(e.target.value)}>
-//         <option value="oldest">Oldest to Newest</option>
-//         <option value="newest">Newest to Oldest</option>
-//       </select>
-
-//       {data.map(item => (
-//         <div key={item.id}>
-//       {/* Render your data here */}
-//           {/* Render your item content */}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default YourComponent;
