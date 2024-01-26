@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllPizzas } from "../../Services/pizzaServices.js";
 import { Pizza } from "./Pizza.js";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export const PizzaList = ({ pizza, baseOrderCost }) => {
   const [allPizzas, setAllPizzas] = useState([]);
@@ -10,6 +10,8 @@ export const PizzaList = ({ pizza, baseOrderCost }) => {
   const [numToppings, setNumToppings] = useState(0);
 
   const { orderId } = useParams();
+
+  const navigate = useNavigate();
 
   const getAndSetPizzas = () => {
     getAllPizzas().then(setAllPizzas);
@@ -53,7 +55,14 @@ export const PizzaList = ({ pizza, baseOrderCost }) => {
             />
           </div>
         ))}
-        <button className="btn btn-lg btn-success">Add a new pizza!</button>
+        <button
+          className="btn btn-lg btn-success"
+          onClick={() => {
+            navigate(`createPizza`);
+          }}
+        >
+          Add a new pizza!
+        </button>
       </article>
       <div>Total order cost: {totalCost + numToppings * 0.5}</div>
     </div>

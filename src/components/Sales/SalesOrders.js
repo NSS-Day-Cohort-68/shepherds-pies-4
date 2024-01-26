@@ -15,7 +15,7 @@ export const SalesOrders = ({ order }) => {
 
   return (
     <section className="order">
-      <header className="order-info">Order #: {order.id}</header>
+      <header className="order-info">Order #: {order?.id}</header>
       <div className="order-info">Date Placed: {formattedDate}</div>
     </section>
   );

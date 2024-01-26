@@ -83,14 +83,6 @@
       "tableId": 6
     },
     {
-      "delivery": false,
-      "tip": 0,
-      "tableId": 1,
-      "datePlaced": "2024-02-23T20:37:09.543Z",
-      "userId": 0,
-      "id": 7
-    },
-    {
       "delivery": true,
       "tip": 0,
       "tableId": 0,
@@ -119,7 +111,7 @@
       "tip": 0,
       "tableId": 0,
       "datePlaced": "2024-05-24T04:40:23.436Z",
-      "userId": 0,
+      "userId": 5,
       "id": 11
     },
     {
@@ -215,16 +207,6 @@
       "pizzaId": 1
     },
     {
-      "id": 4,
-      "toppingId": 4,
-      "pizzaId": 2
-    },
-    {
-      "id": 5,
-      "toppingId": 5,
-      "pizzaId": 2
-    },
-    {
       "id": 6,
       "toppingId": 6,
       "pizzaId": 3
@@ -313,11 +295,6 @@
       "id": 23,
       "toppingId": 8,
       "pizzaId": 11
-    },
-    {
-      "id": 24,
-      "toppingId": 1,
-      "pizzaId": 11
     }
   ],
   "pizzas": [
@@ -326,13 +303,6 @@
       "sizeId": 1,
       "cheeseId": 1,
       "sauceId": 1,
-      "orderId": 2
-    },
-    {
-      "id": 2,
-      "sizeId": 2,
-      "cheeseId": 2,
-      "sauceId": 2,
       "orderId": 2
     },
     {

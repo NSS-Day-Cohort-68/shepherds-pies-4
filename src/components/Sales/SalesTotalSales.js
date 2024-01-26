@@ -7,7 +7,7 @@ export const SalesTotalSales = ({ filteredMonth }) => {
 
   useEffect(() => {
     filteredMonth.forEach((pizza) => {
-      console.log("PizzatipCost", pizza.order.tip);
+      console.log("PizzatipCost", pizza.order?.tip);
       console.log("pizzaToppingsCost", pizza?.pizzaToppings?.length / 2);
       console.log("pizzaSizeCost", pizza?.size?.cost);
       if (pizza?.order?.Delivery) {

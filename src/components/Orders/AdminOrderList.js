@@ -61,7 +61,7 @@ export const AdminOrderList = () => {
       </div>
       <article className="orders text-light">
         {sortedOrders.map((orderObj) => (
-          <Link key={orderObj.id} to={`/adminOrders/${orderObj.id}`}>
+          <Link key={orderObj.id} to={`/orders/${orderObj.id}`}>
             <Order
               getAndSetOrders={getAndSetOrders}
               order={orderObj}

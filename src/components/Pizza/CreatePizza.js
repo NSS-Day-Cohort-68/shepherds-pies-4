@@ -5,82 +5,23 @@ import {
   getAllCheeses,
   getAllSauces,
   savePizza,
+  addNewPizzaToppings,
 } from "../../Services/pizzaServices.js";
+import { Link, useParams } from "react-router-dom";
+import "./CreatePizza.css";
 
 export const CreatePizza = () => {
   const [pizzaSizeArray, setPizzaSizeArray] = useState([]);
   const [cheeseArray, setCheeseArray] = useState([]);
   const [sauceArray, setSauceArray] = useState([]);
   const [toppingsArray, setToppingsArray] = useState([]);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [selectedCheese, setSelectedCheese] = useState("");
-  const [selectedSauce, setSelectedSauce] = useState("");
-  const [newOrderId, setNewOrderId] = useState(undefined);
-  const [currentPizza, setCurrentPizza] = useState({});
-  const [editOrderId, setEditOrderId] = useState("");
-  const [orderId, setOrderId] = useState(undefined);
-  const [pizzaId, setPizzaId] = useState("");
+  const [selectedSizeId, setSelectedSizeId] = useState(0);
+  const [selectedCheeseId, setSelectedCheeseId] = useState(0);
+  const [selectedSauceId, setSelectedSauceId] = useState(0);
+  const [selectedToppings, setSelectedToppings] = useState([]);
+  const [createdPizzaId, setCreatedPizzaId] = useState(0);
 
-  const addPizza = () => {
-    if (pizzaId === undefined && orderId === undefined) {
-      const createNewPizza = {
-        sizeId: selectedSize,
-        cheeseId: selectedCheese,
-        sauceId: selectedSauce,
-        orderId: newOrderId,
-      };
-      savePizza(createNewPizza).then((res) => {
-        setCurrentPizza(res);
-      });
-    } else if (pizzaId === undefined && orderId !== undefined) {
-      setEditOrderId(editOrderId);
-      const createPizzaObject = {
-        sizeId: selectedSize,
-        cheeseId: selectedCheese,
-        sauceId: selectedSauce,
-        orderId: editOrderId,
-      };
-      savePizza(createPizzaObject).then((res) => {
-        setCurrentPizza(res);
-      });
-    }
-  };
-
-  const handleToppingChange = (toppingId) => {
-    setToppingsArray((prevToppings) => {
-      if (prevToppings.includes(toppingId)) {
-        return prevToppings.filter((id) => id !== toppingId);
-      } else {
-        return [...prevToppings, toppingId];
-      }
-    });
-  };
-
-  const handleSaveEditClick = async (event) => {
-    event.preventDefault();
-
-    if (!selectedSize || !selectedCheese || !selectedSauce) {
-      console.error("Please select size, cheese, and sauce");
-
-      return;
-    }
-
-    const pizzaObject = {
-      sizeId: selectedSize,
-      cheeseId: selectedCheese,
-      sauceId: selectedSauce,
-      orderId: orderId !== undefined ? editOrderId : newOrderId,
-    };
-
-    const savedPizza = await savePizza(pizzaObject);
-
-    console.log("Pizza added to order successfully!", savedPizza);
-
-    setSelectedSize("");
-    setSelectedCheese("");
-    setSelectedSauce("");
-    setToppingsArray([]);
-  };
+  const { orderId } = useParams();
 
   useEffect(() => {
     getAllSizes().then((res) => {
@@ -106,97 +47,138 @@ export const CreatePizza = () => {
     });
   }, []);
 
+  const handleToppingChange = (topping) => {
+    setSelectedToppings((prevArray) => {
+      if (prevArray.includes(topping)) {
+        return prevArray.filter((item) => item !== topping);
+      } else {
+        return [...prevArray, topping];
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (createdPizzaId !== 0) {
+      selectedToppings.map((topping) => {
+        const pizzaToppingsObj = {
+          pizzaId: createdPizzaId,
+          toppingId: topping.id,
+        };
+        return addNewPizzaToppings(pizzaToppingsObj);
+      });
+    }
+  }, [createdPizzaId, selectedToppings]);
+
+  const handleAddButtonClick = async (event) => {
+    event.preventDefault();
+    const pizzaObject = {
+      sizeId: selectedSizeId,
+      cheeseId: selectedCheeseId,
+      sauceId: selectedSauceId,
+      orderId: parseInt(orderId),
+    };
+    await savePizza(pizzaObject).then((res) => {
+      setCreatedPizzaId(res.id);
+    });
+  };
+
   return (
-    <form>
+    <form className="pizzas text-light">
       <h2>Create Pizza</h2>
-      <fieldset>
-        <div className="form-group">
-          <label>Size</label>
-          <select
-            onChange={(event) => {
-              setSelectedSize(event.target.value);
-            }}
-            name="sizes"
-          >
-            {pizzaSizeArray.map((size) => (
-              <option key={size.id} value={size.id}>
-                {size.size}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label>Cheese</label>
-          <select
-            onChange={(event) => {
-              setSelectedCheese([event.target.value]);
-            }}
-            name="cheeses"
-          >
-            {cheeseArray.map((cheese) => (
-              <option key={cheese.id} value={cheese.id}>
-                {cheese.cheese}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label>Sauce</label>
-          <select
-            onChange={(event) => {
-              setSelectedSauce([event.target.value]);
-            }}
-            name="sauces"
-          >
-            {sauceArray.map((sauce) => (
-              <option key={sauce.id} value={sauce.id}>
-                {sauce.sauce}
-              </option>
-            ))}
-          </select>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label>Select Toppings</label>
-          {toppingsArray.map((topping) => (
-            <div key={topping.id} className="topping-option">
-              <input
-                type="checkbox"
-                name="topping"
-                value={topping.id}
-                checked={toppingsArray.includes(topping.id)}
-                onChange={() => {
-                  handleToppingChange(topping.id);
+      <div className="pizza-container">
+        <div className="pizza-dropdowns">
+          <fieldset>
+            <div className="form-group">
+              <label>Size</label>
+              <select
+                onChange={(event) => {
+                  setSelectedSizeId(parseInt(event.target.value));
                 }}
-              />
-              <label htmlFor={`topping${topping.id}`}>{topping.name}</label>
+                name="sizes"
+              >
+                <option id="0" value={0}>
+                  Choose size
+                </option>
+                {pizzaSizeArray.map((size) => (
+                  <option key={size.id} value={size.id}>
+                    {size.size}
+                  </option>
+                ))}
+              </select>
             </div>
-          ))}
+          </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <label>Cheese</label>
+              <select
+                onChange={(event) => {
+                  setSelectedCheeseId(parseInt(event.target.value));
+                }}
+                name="cheeses"
+              >
+                <option id="0" value={0}>
+                  Choose cheese
+                </option>
+                {cheeseArray.map((cheese) => (
+                  <option key={cheese.id} value={cheese.id}>
+                    {cheese.cheese}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </fieldset>
+          <fieldset>
+            <div className="form-group">
+              <label>Sauce</label>
+              <select
+                onChange={(event) => {
+                  setSelectedSauceId(parseInt(event.target.value));
+                }}
+                name="sauces"
+              >
+                <option id="0" value={0}>
+                  Choose sauce
+                </option>
+                {sauceArray.map((sauce) => (
+                  <option key={sauce.id} value={sauce.id}>
+                    {sauce.sauce}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </fieldset>
         </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <button className="add-button" onClick={handleSaveEditClick}>
+        <fieldset className="toppings">
+          <div className="toppings-list">
+            <h4>Select Toppings</h4>
+            {toppingsArray.map((topping) => (
+              <div key={topping.id} className="topping-option">
+                <input
+                  type="checkbox"
+                  name="topping"
+                  value={topping.id}
+                  onChange={() => {
+                    handleToppingChange(topping);
+                  }}
+                />
+                <label htmlFor={`topping${topping.id}`}>{topping.name}</label>
+              </div>
+            ))}
+          </div>
+        </fieldset>
+        <fieldset>
+          <button className="add-button" onClick={handleAddButtonClick}>
             Add to Order
           </button>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <button className="checkout-button" onClick={handleSaveEditClick}>
-            Checkout!
-          </button>
-        </div>
-      </fieldset>
+        </fieldset>
+        <fieldset>
+          <div>
+            <Link to={`/orders/${orderId}`}>
+              <button className="checkout-button">Checkout</button>
+            </Link>
+          </div>
+        </fieldset>
+      </div>
     </form>
   );
 };
-
-// Toppings displays a brand new one at bottom after you click on one. Fix
-
-// state is making a copy
