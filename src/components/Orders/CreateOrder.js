@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { addNewOrder } from "../../Services/orderServices";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const CreateOrder = ({ currentUser }) => {
   const [delivery, setDelivery] = useState(null);
   const [tableId, setTableId] = useState(0);
   const [tip, setTip] = useState(0);
 
-  const handleCreateOrderClick = () => {
+  const navigate = useNavigate();
+
+  const handleCreateOrderClick = async () => {
     const orderObj = {
       delivery: delivery,
       tip: tip,
@@ -15,7 +17,10 @@ export const CreateOrder = ({ currentUser }) => {
       datePlaced: new Date(),
       userId: currentUser.id,
     };
-    addNewOrder(orderObj);
+    
+    await addNewOrder(orderObj).then((res) => {
+      navigate(`${res.id}/createPizza`);
+    });
   };
 
   return (
@@ -104,9 +109,7 @@ export const CreateOrder = ({ currentUser }) => {
         />
       </div>
       <div className="btn-container">
-        <Link to="/createPizza">
-          <button onClick={handleCreateOrderClick}>Add Pizza</button>
-        </Link>
+        <button onClick={handleCreateOrderClick}>Add Pizza</button>
       </div>
     </div>
   );

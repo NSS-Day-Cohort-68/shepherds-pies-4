@@ -24,15 +24,18 @@ export const EmployeeViews = ({ currentUser }) => {
         <Route index element={<Welcome />} />
         <Route path="orders">
           <Route index element={<OrderList />} />
-          <Route path=":orderId" element={<OrderDetails />} /> {""}
+          <Route path=":orderId">
+            <Route index element={<OrderDetails />} />
+            <Route path="createPizza" element={<CreatePizza />} />
+          </Route>
         </Route>{" "}
-        <Route
-          path="createOrder"
-          element={<CreateOrder currentUser={currentUser} />}
-        />
-        <Route path="createPizza" />
-        <Route path="createOrder" element={<CreateOrder />} />
-        <Route path="createPizza" element={<CreatePizza />} />
+        <Route path="createOrder">
+          <Route index element={<CreateOrder currentUser={currentUser} />} />
+          <Route
+            path=":orderId/createPizza"
+            element={<CreatePizza currentUser={currentUser} />}
+          />
+        </Route>
         <Route path="logIn" element={<Login />} />
       </Route>
     </Routes>

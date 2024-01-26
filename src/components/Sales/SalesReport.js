@@ -96,7 +96,7 @@ export const SalesReport = () => {
       <section className="sales-box">
         <article className="orders text-light sales-orders">
           {filteredMonth.map((orderObj) => (
-            <Link key={orderObj.id} to={`/adminOrders/${orderObj.orderId}`}>
+            <Link key={orderObj.id} to={`/orders/${orderObj.orderId}`}>
               <SalesOrders order={orderObj.order} key={orderObj.orderId} />
             </Link>
           ))}

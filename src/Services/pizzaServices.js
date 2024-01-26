@@ -36,6 +36,17 @@ export const savePizza = async (pizzaObject) => {
   let pizza = res.json();
   return pizza;
 };
+
+export const addNewPizzaToppings = (toppingObj) => {
+  return fetch(`http://localhost:8088/pizzaToppings`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(toppingObj),
+  });
+};
+
 export const deletePizza = (pizzaId) => {
   return fetch(`http://localhost:8088/pizzas/${pizzaId}`, {
     method: "DELETE",

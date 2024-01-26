@@ -15,7 +15,7 @@ export const addNewOrder = (orderObj) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(orderObj),
-  });
+  }).then((res) => res.json());
 };
 
 export const deleteOrder = (orderId) => {
