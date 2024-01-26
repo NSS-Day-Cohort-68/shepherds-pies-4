@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { deletePizza, getAllToppings } from "../../Services/pizzaServices.js";
+import { getAllPizzaToppings } from "../../Services/pizzaServices.js";
 
 export const Pizza = ({ pizza, getNumToppings, getAndSetPizzas }) => {
   const [pizzaToppings, setPizzaToppings] = useState([]);
   const [pizzaCost, setPizzaCost] = useState(0);
 
   useEffect(() => {
-    getAllToppings().then((toppingsArray) => {
+    getAllPizzaToppings().then((toppingsArray) => {
       const toppingsForPizza = toppingsArray.filter(
         (topping) => topping.pizzaId === pizza.id
       );
       setPizzaToppings(toppingsForPizza);
+      console.log(pizzaToppings);
     });
   }, [pizza.id]);
 
